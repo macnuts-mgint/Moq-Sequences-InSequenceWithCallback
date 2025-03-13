@@ -2,7 +2,7 @@ using Moq.Language.Flow;
 
 namespace Moq.Sequences
 {
-    public static class SequenceExtensions
+    public static partial class SequenceExtensions
     {
         public static ISetup<T> InSequence<T>(this ISetup<T> setup) where T : class
         {

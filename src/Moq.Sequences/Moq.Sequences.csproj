@@ -37,4 +37,16 @@
     <PackageReference Include="Moq" Version="4.11.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="SequenceExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SequenceExtensions.Generated.cs</LastGenOutput>
+    </None>
+    <Compile Update="SequenceExtensions.Generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SequenceExtensions.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

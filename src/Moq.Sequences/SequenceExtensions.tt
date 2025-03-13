@@ -1,0 +1,128 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".Generated.cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Import Namespace="System.Linq" #>
+using System;
+using Moq.Language.Flow;
+namespace Moq.Sequences {
+	public static partial class SequenceExtensions {
+		public static ISetupGetter<T, TProperty> InSequenceWithCallback<T, TProperty>(this ISetupGetter<T, TProperty> setup, Action callback) where T : class {
+			return InSequenceWithCallback(setup, callback, Times.Once());
+		}
+		public static ISetupGetter<T, TProperty> InSequenceWithCallback<T, TProperty>(this ISetupGetter<T, TProperty> setup, Action callback, Times expectedCalls) where T : class {
+			AddStep(setup, callback, expectedCalls);
+			return setup;
+		}
+		internal static void AddStep<T, TResult>(ISetupGetter<T, TResult> setup, Action callback, Times expectedCalls) where T : class {
+			var step = Sequence.Step(setup, expectedCalls);
+			setup.Callback(() => { Sequence.Record(step); callback(); });
+		}
+<#
+for (var argumentCount = 0; argumentCount <= 16; ++argumentCount) { #>
+		public static ISetup<T> InSequenceWithCallback<T<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(this ISetup<T> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback) where T : class {
+			return InSequenceWithCallback(setup, callback, Times.Once());
+		}
+		public static ISetup<T> InSequenceWithCallback<T<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(this ISetup<T> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback, Times expectedCalls) where T : class {
+			AddStep(setup, callback, expectedCalls);
+			return setup;
+		}
+		public static ISetup<T, TResult> InSequenceWithCallback<T, TResult<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(this ISetup<T, TResult> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback) where T : class {
+			return InSequenceWithCallback(setup, callback, Times.Once());
+		}
+		public static ISetup<T, TResult> InSequenceWithCallback<T, TResult<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(this ISetup<T, TResult> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback, Times expectedCalls) where T : class {
+			AddStep(setup, callback, expectedCalls);
+			return setup;
+		}
+		internal static void AddStep<T<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(ISetup<T> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback, Times expectedCalls) where T : class {
+			var step = Sequence.Step(setup, expectedCalls);
+			setup.Callback((<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#> arg<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			} #>) => { Sequence.Record(step); callback(<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>arg<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			} #>); });
+		}
+		internal static void AddStep<T, TResult<#
+		for (var i = 1; i <= argumentCount; ++i) {
+			#>, T<#=i#><#
+		} #>>(ISetup<T, TResult> setup, Action<#
+		if (argumentCount > 0) {
+			#><<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			}
+			#>><#
+		} #> callback, Times expectedCalls) where T : class {
+			var step = Sequence.Step(setup, expectedCalls);
+			setup.Callback((<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>T<#=i#> arg<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			} #>) => { Sequence.Record(step); callback(<#
+			for (var i = 1; i <= argumentCount; ++i) {
+				#>arg<#=i#><#
+				if (i != argumentCount) { #>, <# }
+			} #>); });
+		}
+<# } #>
+	}
+}
