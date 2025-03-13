@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
     <IsPackable>False</IsPackable>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>Moq.Sequences.Tests.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

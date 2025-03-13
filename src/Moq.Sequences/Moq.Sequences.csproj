@@ -19,6 +19,8 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>Moq.Sequences.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,6 +37,10 @@
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.11.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Moq.Sequences.Tests" PublicKey="0024000004800000140100000602000000240000525341310008000001000100899b7403555fb39108ec421386cffbcbe331aea3134f7aef4a4b25c96b3820b9789d47267393a5244b4d388600e27751f25c532a525e6454f36c38036cccf008a845e0f026af6ea8f12754066faf0cec1b2d891d7ba55fe1323599e95984e1aa0a1e8fd9eadc22a4f9f0c2aa6639d440277e484f5b75bc82ccfd335905257cbd82cec98f2e232939f5b8bd8a1f53a2075a77cf1c731ce0a6a26a91c887f62cbdda4fe81af9d8785268bdf825d0e46d9e5bcc5eb5fb87835c8b06d9e4d9b41d4cb0e03cf988f2a7599f7d84bc26c7b8de63f735a9220db8b04561d15da1082f75408ac421c3d47913f958376a2c6f6c264a6768775f0aa6cb575253be5f30e5ac" />
   </ItemGroup>
 
 </Project>
