@@ -32,7 +32,7 @@ namespace Moq.Sequences.Tests
 
                 var result = await sut.DoMyStuffAsync();
 
-                Assert.AreEqual("someString", result);
+                Assert.That(result, Is.EqualTo("someString"));
             }
         }
 

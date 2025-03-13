@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <Version>2.2.1</Version>
     <Authors>Declan Whelan</Authors>
     <Copyright>© 2010 Declan Whelan</Copyright>
@@ -12,7 +12,7 @@
     <RepositoryUrl>https://github.com/dwhelan/Moq-Sequences.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageReleaseNotes>Enabled SourceLink and added a symbols package.</PackageReleaseNotes>
-    <PackageTags>moq mock .net45 netstandard2.0</PackageTags>
+    <PackageTags>moq mock net462 netstandard2.0 netstandard2.1 net6.0</PackageTags>
     <AssemblyVersion>2.2.1.0</AssemblyVersion>
     <FileVersion>2.2.1.0</FileVersion>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -24,19 +24,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net462' ">
     <DefineConstants>$(DefineConstants);FEATURE_CALLCONTEXT</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' != 'net462' ">
     <DefineConstants>$(DefineConstants);FEATURE_ASYNCLOCAL</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.11.0" />
+    <PackageReference Include="Moq" Version="4.20.72" />
   </ItemGroup>
 
   <ItemGroup>
