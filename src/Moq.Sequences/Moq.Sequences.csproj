@@ -3,9 +3,10 @@
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0;netstandard2.1;net6.0</TargetFrameworks>
     <Version>2.2.1</Version>
-    <Authors>Declan Whelan</Authors>
+    <Authors>Declan Whelan, Maciej Orzech</Authors>
     <Copyright>© 2010 Declan Whelan</Copyright>
-    <Description>Supports checking that Moq setups are executed in sequence.</Description>
+    <Description>Supports checking that Moq setups are executed in sequence.
+InSequenceWithCallback extension methods added for a selection of Action&lt;...&gt; callback arguments.</Description>
     <Company />
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/dwhelan/Moq-Sequences</PackageProjectUrl>
@@ -21,6 +22,7 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Moq.Sequences.snk</AssemblyOriginatorKeyFile>
+    <PackageId>$(AssemblyName).InSequenceWithCallback</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
